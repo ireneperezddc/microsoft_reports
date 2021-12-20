@@ -6,6 +6,7 @@
 
 from reports.nce_promos.entrypoint import generate, HEADERS
 
+
 def test_nce_promos(progress, client_factory, response_factory, ff_request, tc_request):
     responses = []
 
@@ -26,7 +27,8 @@ def test_nce_promos(progress, client_factory, response_factory, ff_request, tc_r
 
     responses.append(
         response_factory(
-            query='ge(events.created.at,2021-12-01T00:00:00),le(events.created.at,2021-12-20T00:00:00),'
+            query='ge(events.created.at,2021-12-01T00:00:00),'
+                  'le(events.created.at,2021-12-20T00:00:00),'
                   'eq(status,approved),eq(asset.params.id,nce_promo_final)',
             value=ff_request,
         ),
@@ -65,8 +67,11 @@ def test_generate_csv_rendered(progress, client_factory, response_factory, ff_re
 
     responses.append(
         response_factory(
-            query='ge(events.created.at,2021-12-01T00:00:00),le(events.created.at,2021-12-20T00:00:00),'
-                  'eq(status,approved),eq(asset.params.id,nce_promo_final),in(asset.product.id,(PRD-111-222-333)),'
+            query='ge(events.created.at,2021-12-01T00:00:00),'
+                  'le(events.created.at,2021-12-20T00:00:00),'
+                  'eq(status,approved),'
+                  'eq(asset.params.id,nce_promo_final),'
+                  'in(asset.product.id,(PRD-111-222-333)),'
                   'in(marketplace.id,(MP-123))',
             value=ff_request,
         ),
@@ -94,8 +99,11 @@ def test_generate_json_render(progress, client_factory, response_factory, ff_req
 
     responses.append(
         response_factory(
-            query='ge(events.created.at,2021-12-01T00:00:00),le(events.created.at,2021-12-20T00:00:00),'
-                  'eq(status,approved),eq(asset.params.id,nce_promo_final),in(asset.product.id,(PRD-111-222-333))',
+            query='ge(events.created.at,2021-12-01T00:00:00),'
+                  'le(events.created.at,2021-12-20T00:00:00),'
+                  'eq(status,approved),'
+                  'eq(asset.params.id,nce_promo_final),'
+                  'in(asset.product.id,(PRD-111-222-333))',
             value=ff_request,
         ),
     )

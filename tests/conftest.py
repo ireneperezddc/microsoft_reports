@@ -114,7 +114,7 @@ def client_factory():
                 mock_kwargs['status'] = 200
                 mock_kwargs['json'] = res.value
                 mock_kwargs['headers'] = {
-                    'Content-Range': f'items 0-{end}/{count}'
+                    'Content-Range': f'items 0-{end}/{count}',
                 }
             elif isinstance(res.value, dict):
                 mock_kwargs['status'] = res.status or 200
@@ -144,6 +144,7 @@ def client_factory():
         return client
     return _create_client
 
+
 @pytest.fixture
 def ff_request():
     with open(
@@ -155,6 +156,7 @@ def ff_request():
         ),
     ) as request:
         return json.load(request)
+
 
 @pytest.fixture
 def tc_request():

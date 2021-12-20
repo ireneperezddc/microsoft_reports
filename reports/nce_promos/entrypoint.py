@@ -6,11 +6,11 @@
 from reports.utils import get_basic_value, get_value, parameter_value, convert_to_datetime
 
 HEADERS = (
-    'Request Type', 'Request ID', 'Product ID', 'Product Name', 'Request Created At', 'Subscription Created At',
-    'Subscription ID', 'Subscription Status', 'Subscription External ID', 'Promotion Applied (%)',
-    'Microsoft Tenant ID', 'Microsoft Domain', 'Microsoft Subscription ID', 'Microsoft Order ID', 'Microsoft Plan ID',
-    'Item ID', 'Item MPN', 'Item Name', 'Item Period', 'Item Quantity', 'Marketplace Name',
-    'Microsoft Tier1 MPN (if any)', 'Customer ID'
+    'Request Type', 'Request ID', 'Product ID', 'Product Name', 'Request Created At',
+    'Subscription Created At', 'Subscription ID', 'Subscription Status', 'Subscription External ID',
+    'Promotion Applied (%)', 'Microsoft Tenant ID', 'Microsoft Domain', 'Microsoft Subscription ID',
+    'Microsoft Order ID', 'Microsoft Plan ID', 'Item ID', 'Item MPN', 'Item Name', 'Item Period',
+    'Item Quantity', 'Marketplace Name', 'Microsoft Tier1 MPN (if any)', 'Customer ID',
 )
 
 TIER_CONFIGS = {}
@@ -50,7 +50,7 @@ def _get_request_list(client, parameters):
         f'ge(events.created.at,{parameters["date"]["after"]})',
         f'le(events.created.at,{parameters["date"]["before"]})',
         'eq(status,approved)',
-        'eq(asset.params.id,nce_promo_final)'
+        'eq(asset.params.id,nce_promo_final)',
     ]
 
     if parameters.get('product') and parameters['product']['all'] is False:
@@ -76,7 +76,7 @@ def _get_tier1_mpn(client, product_id, account_id):
         TIER_CONFIGS[product_id][account_id] = "-"
         query = [
             f'eq(product.id,{product_id})',
-            f'eq(account.id,{account_id})'
+            f'eq(account.id,{account_id})',
         ]
         result = client.ns('tier').collection('configs').filter(','.join(query))
         for config in result:
@@ -90,7 +90,7 @@ def _process_line(client, request):
     tier1_mpn = _get_tier1_mpn(
         client,
         get_value(request['asset'], 'product', 'id'),
-        get_value(request['asset']['tiers'], 'tier1', 'id')
+        get_value(request['asset']['tiers'], 'tier1', 'id'),
     )
     return (
         get_basic_value(request, 'type'),
@@ -115,5 +115,5 @@ def _process_line(client, request):
         get_basic_value(request['asset']['items'][0], 'quantity'),
         get_value(request['asset'], 'marketplace', 'name'),
         tier1_mpn,
-        get_value(request['asset']['tiers'], 'customer', 'id')
+        get_value(request['asset']['tiers'], 'customer', 'id'),
     )
