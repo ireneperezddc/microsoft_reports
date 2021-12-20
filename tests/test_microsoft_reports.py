@@ -4,73 +4,103 @@
 # All rights reserved.
 #
 
-from reports.nce_promos.entrypoint import generate
+from reports.nce_promos.entrypoint import generate, HEADERS
 
-
-def test_nce_promos(progress, client_factory, response_factory, extra_context_callback):
-    """
-    Test dataset generation.
-    To mock http calls, you must create the list of responses
-    for each client call.
-
-    Ex:
-    ```
-
+def test_nce_promos(progress, client_factory, response_factory, ff_request, tc_request):
     responses = []
-    # create a response for a count call
 
-    responses.append(response_factory(count=100))
-
-    # create response for a collection
-
-    responses.append(response_factory(value=[
-        {
-            'id': 'OBJ-001',
-            ....
+    parameters = {
+        'date': {
+            'after': '2021-12-01T00:00:00',
+            'before': '2021-12-20T00:00:00',
         },
-        {
-            'id': 'OBJ-002',
-            ....
+        'product': {
+            'all': True,
+            'choices': [],
         },
-    ]))
+        'mkp': {
+            'all': True,
+            'choices': [],
+        },
+    }
 
-    # create a response that raises an Exception
+    responses.append(
+        response_factory(
+            query='ge(events.created.at,2021-12-01T00:00:00),le(events.created.at,2021-12-20T00:00:00),'
+                  'eq(status,approved),eq(asset.params.id,nce_promo_final)',
+            value=ff_request,
+        ),
+    )
 
-    responses.append(response_factory(exception=Exception('my_exception')))
-
-    # create a response that returns a http 404
-
-    responses.append(response_factory(status=404))
-
-    # create a response and pass an RQL query, ordering and select
-    # to check that it match
-
-    responses.append(response_factory(
-        query='in(status,(approved,rejected))',
-        ordering=['-created'],
-        select=['asset'],
-        value=[],
-    ))
-
-    # create a client instance
+    responses.append(
+        response_factory(
+            query='eq(product.id,PRD-111-222-333),eq(account.id,TA-1)',
+            value=tc_request,
+        ),
+    )
 
     client = client_factory(responses)
+    result = list(generate(client, parameters, progress))
 
-    # create extra context information on the renderer used, if needed
-    
-    renderer_mock = mocker.MagicMock()
-    renderer_mock.type = 'pdf'
-    renderer_mock.render.return_value = 'outfile.pdf'
-    renderer_mock.set_extra_context = extra_ctx_callback
+    assert len(result) == 2
 
-    :param progress: MagicMock to use as progress_callback
-    :type mocker: MagicMock
-    :param client_factory: Function that returns an instance of ConnectClient
-    :type client_factory: func
-    :param response_factory: Function that creates ConnectClient reponses.
-    :type response_factory: func
-    :param extra_context_callback: Function that creates extra context information.
-    :type extra_context_callback: func
-    """
 
-    pass
+def test_generate_csv_rendered(progress, client_factory, response_factory, ff_request):
+    responses = []
+
+    parameters = {
+        'date': {
+            'after': '2021-12-01T00:00:00',
+            'before': '2021-12-20T00:00:00',
+        },
+        'product': {
+            'all': False,
+            'choices': ['PRD-111-222-333'],
+        },
+        'mkp': {
+            'all': False,
+            'choices': ['MP-123'],
+        },
+    }
+
+    responses.append(
+        response_factory(
+            query='ge(events.created.at,2021-12-01T00:00:00),le(events.created.at,2021-12-20T00:00:00),'
+                  'eq(status,approved),eq(asset.params.id,nce_promo_final),in(asset.product.id,(PRD-111-222-333)),'
+                  'in(marketplace.id,(MP-123))',
+            value=ff_request,
+        ),
+    )
+    client = client_factory(responses)
+    result = list(generate(client, parameters, progress, renderer_type='csv'))
+
+    assert len(result) == 3
+    assert result[0] == HEADERS
+
+
+def test_generate_json_render(progress, client_factory, response_factory, ff_request):
+    responses = []
+
+    parameters = {
+        'date': {
+            'after': '2021-12-01T00:00:00',
+            'before': '2021-12-20T00:00:00',
+        },
+        'product': {
+            'all': False,
+            'choices': ['PRD-111-222-333'],
+        },
+    }
+
+    responses.append(
+        response_factory(
+            query='ge(events.created.at,2021-12-01T00:00:00),le(events.created.at,2021-12-20T00:00:00),'
+                  'eq(status,approved),eq(asset.params.id,nce_promo_final),in(asset.product.id,(PRD-111-222-333))',
+            value=ff_request,
+        ),
+    )
+    client = client_factory(responses)
+    result = list(generate(client, parameters, progress, renderer_type='json'))
+
+    assert len(result) == 2
+    assert result[0]['request_id'] == 'PR-2'

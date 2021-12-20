@@ -1,0 +1,1232 @@
+[
+  {
+    "id": "TC-827-921-823",
+    "name": "Configuration of TA-1",
+    "account": {
+      "id": "TA-1",
+      "name": "Reseller 1",
+      "type": "reseller",
+      "external_id": "0001",
+      "external_uid": "abc111",
+      "contact_info": {
+        "address_line1": "micro",
+        "address_line2": null,
+        "city": "Redmond",
+        "state": "wa",
+        "postal_code": "98052",
+        "country": "us",
+        "contact": {
+          "first_name": "Reseller",
+          "last_name": "Test",
+          "email": "reseller1@domain.com",
+          "phone_number": {
+            "country_code": "+1",
+            "area_code": "321",
+            "phone_number": "4569870",
+            "extension": ""
+          }
+        }
+      }
+    },
+    "product": {
+      "id": "PRD-111-222-333",
+      "icon": "/media/VA-123-13/PRD-111-222-333/media/PRD-111-222-333-logo_GPMrv0r.png",
+      "name": "Product Report Test",
+      "status": "published"
+    },
+    "tier_level": 1,
+    "connection": {
+      "id": "CT-1234-5678",
+      "type": "test",
+      "status": "approved",
+      "provider": {
+        "id": "PA-123-123",
+        "name": "Test Provider"
+      },
+      "vendor": {
+        "id": "VA-123-13",
+        "name": "Test Vendor"
+      },
+      "hub": {
+        "id": "HB-123",
+        "name": "hub.test.zone"
+      },
+      "created_at": "2021-10-22T07:58:39+00:00"
+    },
+    "events": {
+      "created": {
+        "at": "2021-12-16T07:31:44+00:00"
+      },
+      "updated": {
+        "at": "2021-12-20T12:38:11+00:00",
+        "by": {
+          "id": "SU-458-266-914",
+          "name": "EaaS token"
+        }
+      }
+    },
+    "params": [
+      {
+        "value": "",
+        "title": "Indirect Reseller GUID",
+        "description": "Indirect Reseller GUID",
+        "type": "text",
+        "scope": "tier1",
+        "phase": "fulfillment",
+        "constraints": {
+          "required": false,
+          "hidden": false,
+          "unique": false
+        },
+        "id": "tier1_guid"
+      },
+      {
+        "value": "testreseller1.onmicrosoft.com",
+        "title": "Indirect Reseller Domain",
+        "description": "Please provide your domain, it should be similar to subdomain.onmicrosoft.com",
+        "type": "domain",
+        "scope": "tier1",
+        "phase": "ordering",
+        "hint": "Please provide your indirect reseller domain",
+        "placeholder": "yourbusiness.onmicrosoft.com",
+        "constraints": {
+          "required": false,
+          "hidden": false,
+          "unique": false
+        },
+        "id": "indirect_reseller_domain"
+      },
+      {
+        "value": "YES",
+        "title": "Tier request processed (T1)",
+        "description": "Tier request processed (T1)",
+        "type": "text",
+        "scope": "tier1",
+        "phase": "fulfillment",
+        "constraints": {
+          "required": true,
+          "hidden": false,
+          "unique": false
+        },
+        "id": "tier1_processed"
+      },
+      {
+        "value": "",
+        "structured_value": {
+          "signature": false
+        },
+        "title": "Microsoft Partner Agreement Signature",
+        "description": "Microsoft Partner Agreement Signature",
+        "type": "checkbox",
+        "scope": "tier1",
+        "phase": "ordering",
+        "constraints": {
+          "required": false,
+          "hidden": true,
+          "unique": false,
+          "choices": [
+            {
+              "label": "I confirm I have already sign the Microsoft Partner Agreement",
+              "value": "signature"
+            }
+          ]
+        },
+        "id": "mpaSignature"
+      },
+      {
+        "value": "",
+        "structured_value": {
+          "confirmation": false
+        },
+        "title": "Partnership Confirmation",
+        "description": "Indirect Reseller confirmation of partnership invitation acceptance with the indirect provider.",
+        "type": "checkbox",
+        "scope": "tier1",
+        "phase": "ordering",
+        "constraints": {
+          "required": false,
+          "hidden": true,
+          "unique": false,
+          "choices": [
+            {
+              "label": "I confirm I have already accepted the invitation and authorized my indirect Provider",
+              "value": "confirmation"
+            }
+          ]
+        },
+        "id": "partnershipConfirmation"
+      },
+      {
+        "value": "1122334",
+        "title": "Microsoft Partner Number",
+        "description": "Microsoft Partner Number",
+        "type": "text",
+        "scope": "tier1",
+        "phase": "ordering",
+        "constraints": {
+          "required": false,
+          "hidden": false,
+          "unique": false
+        },
+        "id": "tier1_mpn"
+      }
+    ],
+    "template": {
+      "id": "TL-123-5456-789",
+      "name": "Ntier Model - Tier 1 template",
+      "representation": ""
+    },
+    "status": "active",
+    "configuration": {
+      "params": [
+        {
+          "value": "https://azurehost.com",
+          "events": {
+            "created": {
+              "at": "2021-02-11T15:43:42+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            },
+            "updated": {
+              "at": "2021-02-11T15:43:42+00:00"
+            }
+          },
+          "id": "azure_ad_host",
+          "title": "Azure AD Host",
+          "description": "Azure AD Host",
+          "type": "url",
+          "scope": "product",
+          "phase": "configuration",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "TL-112-223-334",
+          "events": {
+            "created": {
+              "at": "2021-09-23T07:41:00+00:00",
+              "by": {
+                "id": "SU-148-530-931",
+                "name": "Microsoft"
+              }
+            },
+            "updated": {
+              "at": "2021-10-27T14:13:32+00:00",
+              "by": {
+                "id": "UR-520-530-346",
+                "name": "Esther Mora"
+              }
+            }
+          },
+          "id": "default_activation_template_existing",
+          "title": "Default activation template id for existent customers",
+          "description": "Default activation template id for existent customers",
+          "type": "text",
+          "scope": "product",
+          "phase": "configuration",
+          "hint": "Default activation template id for existent customers",
+          "placeholder": "Default activation template id for existent customers",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "TL-445-556-667",
+          "events": {
+            "created": {
+              "at": "2021-09-23T07:41:01+00:00",
+              "by": {
+                "id": "SU-148-530-931",
+                "name": "Microsoft"
+              }
+            },
+            "updated": {
+              "at": "2021-10-27T14:13:19+00:00",
+              "by": {
+                "id": "UR-520-530-346",
+                "name": "Esther Mora"
+              }
+            }
+          },
+          "id": "default_activation_template_new",
+          "title": "Default activation template id for new customers",
+          "description": "Default activation template id for new customers",
+          "type": "text",
+          "scope": "product",
+          "phase": "configuration",
+          "hint": "Default activation template id for new customers",
+          "placeholder": "Default activation template id for new customers",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "TL-778-889-990",
+          "events": {
+            "created": {
+              "at": "2021-09-23T07:41:01+00:00",
+              "by": {
+                "id": "SU-148-530-931",
+                "name": "Microsoft"
+              }
+            },
+            "updated": {
+              "at": "2021-10-27T14:12:27+00:00",
+              "by": {
+                "id": "UR-520-530-346",
+                "name": "Esther Mora"
+              }
+            }
+          },
+          "id": "default_tier1_template",
+          "title": "Default Tier-1 Template Id",
+          "description": "Default Tier-1 Template Id",
+          "type": "text",
+          "scope": "product",
+          "phase": "configuration",
+          "hint": "Default Tier-1 Template Id",
+          "placeholder": "Default Tier-1 Template Id",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "TL-123-321-123",
+          "events": {
+            "created": {
+              "at": "2021-09-23T07:41:00+00:00",
+              "by": {
+                "id": "SU-148-530-931",
+                "name": "Microsoft"
+              }
+            },
+            "updated": {
+              "at": "2021-10-27T14:06:45+00:00",
+              "by": {
+                "id": "UR-520-530-346",
+                "name": "Esther Mora"
+              }
+            }
+          },
+          "id": "default_tier1_template_direct",
+          "title": "Default Tier-1 Template ID for Direct model",
+          "description": "Default Tier-1 Template ID for Direct model",
+          "type": "text",
+          "scope": "product",
+          "phase": "configuration",
+          "hint": "Default Tier-1 Template ID for Direct model",
+          "placeholder": "Default Tier-1 Template ID for Direct model",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "YES",
+          "events": {
+            "created": {
+              "at": "2021-02-25T16:25:55+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            },
+            "updated": {
+              "at": "2021-05-13T16:49:52+00:00",
+              "by": {
+                "id": "SU-323-859-130",
+                "name": "Test Ruben"
+              }
+            }
+          },
+          "id": "is_nce_product",
+          "title": "Is this an NCE product?",
+          "description": "Select if this product is NCE product",
+          "type": "dropdown",
+          "scope": "product",
+          "phase": "configuration",
+          "hint": "I am the hint text",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "choices": [
+              {
+                "label": "No",
+                "value": "NO",
+                "default": true
+              },
+              {
+                "label": "Yes",
+                "value": "YES"
+              }
+            ],
+            "shared": null
+          }
+        },
+        {
+          "value": "10-28-2023",
+          "events": {
+            "created": {
+              "at": "2021-02-11T15:43:19+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            },
+            "updated": {
+              "at": "2021-11-17T16:22:32+00:00",
+              "by": {
+                "id": "UR-520-530-346",
+                "name": "Esther Mora"
+              }
+            }
+          },
+          "id": "mpa_enforcement_date",
+          "title": "Microsoft Partner Agreement enforcement date",
+          "description": "Please specify the MPA enforcement date (mm-dd-yyyy)",
+          "type": "text",
+          "scope": "product",
+          "phase": "configuration",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "https://ms_api_endpoint.com",
+          "events": {
+            "created": {
+              "at": "2021-02-11T15:44:05+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            },
+            "updated": {
+              "at": "2021-02-11T15:44:05+00:00"
+            }
+          },
+          "id": "ms_api_endpoint",
+          "title": "MS API End point",
+          "description": "MS API End point",
+          "type": "url",
+          "scope": "product",
+          "phase": "configuration",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "https://partner_invite_url.com",
+          "events": {
+            "created": {
+              "at": "2021-02-11T15:42:19+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            },
+            "updated": {
+              "at": "2021-02-11T15:42:19+00:00"
+            }
+          },
+          "id": "partner_invite_url",
+          "title": "Partner Invitation Base URL",
+          "description": "Partner Invitation Base URL",
+          "type": "url",
+          "scope": "product",
+          "phase": "configuration",
+          "hint": "I am the hint text",
+          "placeholder": "I am the placeholder text",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "10-28-2021",
+          "events": {
+            "created": {
+              "at": "2021-11-16T16:01:34+00:00",
+              "by": {
+                "id": "UR-520-530-346",
+                "name": "Esther Mora"
+              }
+            },
+            "updated": {
+              "at": "2021-11-16T16:01:34+00:00"
+            }
+          },
+          "id": "partner_on_record_attestation_enforcement_date",
+          "title": "Partner on Record Attestation enforcement date",
+          "description": "Please specify the date from which the Partner on Record Attestation will be required",
+          "type": "text",
+          "scope": "product",
+          "phase": "configuration",
+          "hint": "I am the hint text",
+          "placeholder": "I am the placeholder text",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "https://resource.com",
+          "events": {
+            "created": {
+              "at": "2021-02-11T15:42:43+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            },
+            "updated": {
+              "at": "2021-02-11T15:42:43+00:00"
+            }
+          },
+          "id": "resource",
+          "title": "Resource",
+          "description": "Resource",
+          "type": "text",
+          "scope": "product",
+          "phase": "configuration",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "https://secure_app_azure_ad_host.net",
+          "events": {
+            "created": {
+              "at": "2021-09-23T07:41:01+00:00",
+              "by": {
+                "id": "SU-148-530-931",
+                "name": "Microsoft"
+              }
+            },
+            "updated": {
+              "at": "2021-09-23T07:41:01+00:00"
+            }
+          },
+          "id": "secure_app_azure_ad_host",
+          "title": "Secure App Azure AD Host",
+          "description": "Azure AD Host to use with secure application model (CPV)",
+          "type": "url",
+          "scope": "product",
+          "phase": "configuration",
+          "hint": "I am the hint text",
+          "placeholder": "Secure App Azure AD Host",
+          "constraints": {
+            "required": false,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "123asd_123asd_123asd_123asd",
+          "events": {
+            "created": {
+              "at": "2021-09-23T07:40:59+00:00",
+              "by": {
+                "id": "SU-148-530-931",
+                "name": "Microsoft"
+              }
+            },
+            "updated": {
+              "at": "2021-09-23T07:40:59+00:00"
+            }
+          },
+          "id": "secure_app_client_id",
+          "title": "Secure App Client Id",
+          "description": "Client ID to be used with secure application model (CPV)",
+          "type": "text",
+          "scope": "product",
+          "phase": "configuration",
+          "hint": "I am the hint text",
+          "placeholder": "Secure App Client Id",
+          "constraints": {
+            "required": false,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "asd123ASD123?+",
+          "events": {
+            "created": {
+              "at": "2021-09-23T07:41:02+00:00",
+              "by": {
+                "id": "SU-148-530-931",
+                "name": "Microsoft"
+              }
+            },
+            "updated": {
+              "at": "2021-09-23T07:41:02+00:00"
+            }
+          },
+          "id": "secure_app_client_secret",
+          "title": "Secure App Client Secret",
+          "description": "Client Secret to be used with secure application model (CPV)",
+          "type": "text",
+          "scope": "product",
+          "phase": "configuration",
+          "hint": "I am the hint text",
+          "placeholder": "Secure App Client Secret",
+          "constraints": {
+            "required": false,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "https://secure_app_redirect_uri_test.com",
+          "events": {
+            "created": {
+              "at": "2021-09-23T07:41:02+00:00",
+              "by": {
+                "id": "SU-148-530-931",
+                "name": "Microsoft"
+              }
+            },
+            "updated": {
+              "at": "2021-12-16T12:37:37+00:00",
+              "by": {
+                "id": "UR-520-530-346",
+                "name": "Esther Mora"
+              }
+            }
+          },
+          "id": "secure_app_redirect_uri_test",
+          "title": "Secure App Redirect URI Test",
+          "description": "Redirect URI to be used with the secure application model (CPV) - (Test)",
+          "type": "text",
+          "scope": "product",
+          "phase": "configuration",
+          "hint": "I am the hint text",
+          "placeholder": "Secure App Redirect URI Test",
+          "constraints": {
+            "required": false,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "commercial",
+          "events": {
+            "created": {
+              "at": "2021-02-11T15:45:34+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            },
+            "updated": {
+              "at": "2021-02-11T16:43:05+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            }
+          },
+          "id": "segment",
+          "title": "Item Segment",
+          "description": "This indicates if the item is commercial, education, non profit",
+          "type": "dropdown",
+          "scope": "product",
+          "phase": "configuration",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "choices": [
+              {
+                "label": "Commercial",
+                "value": "commercial"
+              },
+              {
+                "label": "Academic",
+                "value": "academic"
+              },
+              {
+                "label": "Non Profit",
+                "value": "nonprofit"
+              },
+              {
+                "label": "Government Community Cloud",
+                "value": "government"
+              }
+            ],
+            "shared": null
+          }
+        },
+        {
+          "structured_value": {
+            "AM": {
+              "is_tax_id_optional": false,
+              "is_tax_id_supported": true,
+              "tax_id_format": "^\\d{8}(\\d{2})?$"
+            },
+            "TR": {
+              "is_tax_id_optional": false,
+              "is_tax_id_supported": true,
+              "tax_id_format": "^\\d{8}(\\d{2})?$"
+            },
+            "AZ": {
+              "is_tax_id_optional": false,
+              "is_tax_id_supported": true,
+              "tax_id_format": "^\\d{7}(\\d{2}[1-2])?$"
+            },
+            "BY": {
+              "is_tax_id_optional": false,
+              "is_tax_id_supported": true,
+              "tax_id_format": "^\\d{9}$"
+            },
+            "HU": {
+              "is_tax_id_optional": false,
+              "is_tax_id_supported": true,
+              "tax_id_format": "^(\\d{8}?[1-2]?\\d{2})|(\\d{10})$"
+            },
+            "KG": {
+              "is_tax_id_optional": false,
+              "is_tax_id_supported": true,
+              "tax_id_format": "^\\d{14}$"
+            },
+            "KZ": {
+              "is_tax_id_optional": false,
+              "is_tax_id_supported": true,
+              "tax_id_format": "^\\d{4}\\s?[0-6]\\s?[0-3]\\s?\\d{5}\\s?\\d$"
+            },
+            "MD": {
+              "is_tax_id_optional": false,
+              "is_tax_id_supported": true,
+              "tax_id_format": "^(\\d{6,8}|\\d{13})$"
+            },
+            "RU": {
+              "is_tax_id_optional": false,
+              "is_tax_id_supported": true,
+              "tax_id_format": "^(\\d{9,10}|\\d{12})$"
+            },
+            "TJ": {
+              "is_tax_id_optional": false,
+              "is_tax_id_supported": true,
+              "tax_id_format": "^(\\d{9,10}|\\d{12})$"
+            },
+            "UA": {
+              "is_tax_id_optional": false,
+              "is_tax_id_supported": true,
+              "tax_id_format": "^(\\d{8}|\\d{10}|\\d{12})$"
+            },
+            "UZ": {
+              "is_tax_id_optional": false,
+              "is_tax_id_supported": true,
+              "tax_id_format": "^\\d{9}$"
+            }
+          },
+          "events": {
+            "created": {
+              "at": "2021-02-26T10:46:15+00:00",
+              "by": {
+                "id": "UR-326-455-473",
+                "name": "Irene Pérez Diez del Corral"
+              }
+            },
+            "updated": {
+              "at": "2021-12-16T13:36:01+00:00",
+              "by": {
+                "id": "UR-520-530-346",
+                "name": "Esther Mora"
+              }
+            }
+          },
+          "id": "tax_config",
+          "title": "Microsoft Tax Id configuration",
+          "description": "Microsoft Tax Id configuration",
+          "type": "object",
+          "scope": "product",
+          "phase": "configuration",
+          "hint": "I am the hint text",
+          "constraints": {
+            "required": false,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "TL-111-222-111",
+          "events": {
+            "created": {
+              "at": "2021-02-11T15:52:10+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            },
+            "updated": {
+              "at": "2021-05-13T16:27:03+00:00",
+              "by": {
+                "id": "SU-323-859-130",
+                "name": "Test Ruben"
+              }
+            }
+          },
+          "id": "activation_template_existent",
+          "title": "Activation template id for existent customers",
+          "description": "Activation template id for existent customers",
+          "type": "text",
+          "scope": "marketplace",
+          "phase": "configuration",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "TL-222-333-222",
+          "events": {
+            "created": {
+              "at": "2021-02-11T15:52:37+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            },
+            "updated": {
+              "at": "2021-05-13T16:27:05+00:00",
+              "by": {
+                "id": "SU-323-859-130",
+                "name": "Test Ruben"
+              }
+            }
+          },
+          "id": "activation_template_new",
+          "title": "Activation template id for new customers",
+          "description": "Activation template id for new customers",
+          "type": "text",
+          "scope": "marketplace",
+          "phase": "configuration",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "USD",
+          "events": {
+            "created": {
+              "at": "2021-02-11T15:51:42+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            },
+            "updated": {
+              "at": "2021-02-11T15:51:42+00:00"
+            }
+          },
+          "id": "currency",
+          "title": "API Catalog Currency",
+          "description": "API Catalog Currency",
+          "type": "dropdown",
+          "scope": "marketplace",
+          "phase": "configuration",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "choices": [
+              {
+                "value": "USD",
+                "label": "US Dollar"
+              },
+              {
+                "value": "EUR",
+                "label": "Euro"
+              },
+              {
+                "value": "CHF",
+                "label": "Swiss Franc"
+              },
+              {
+                "value": "DKK",
+                "label": "Danish Krone"
+              },
+              {
+                "value": "GBP",
+                "label": "British Pound Sterling"
+              },
+              {
+                "value": "JPY",
+                "label": "Japanese Yen"
+              },
+              {
+                "value": "KRW",
+                "label": "South Korean Won"
+              },
+              {
+                "value": "NOK",
+                "label": "Norwegian Krone"
+              },
+              {
+                "value": "NZD",
+                "label": "New Zealand Dollar"
+              },
+              {
+                "value": "RUB",
+                "label": "Russian Ruble"
+              },
+              {
+                "value": "INR",
+                "label": "Indian Rupee"
+              },
+              {
+                "value": "SEK",
+                "label": "Swedish Krona"
+              },
+              {
+                "value": "TWD",
+                "label": "New Taiwan Dollar"
+              },
+              {
+                "value": "AUD",
+                "label": "Australian Dollar"
+              },
+              {
+                "value": "CAD",
+                "label": "Canadian Dollar"
+              }
+            ],
+            "shared": "edit"
+          }
+        },
+        {
+          "value": "132asd-123-213456-123asd",
+          "events": {
+            "created": {
+              "at": "2021-03-17T16:02:48+00:00",
+              "by": {
+                "id": "SU-323-859-130",
+                "name": "Test Ruben"
+              }
+            },
+            "updated": {
+              "at": "2021-05-13T16:11:13+00:00",
+              "by": {
+                "id": "SU-323-859-130",
+                "name": "Test Ruben"
+              }
+            }
+          },
+          "id": "partner_client_id_production",
+          "title": "Partner Client id (production)",
+          "description": "Partner Client id (production)",
+          "type": "text",
+          "scope": "marketplace",
+          "phase": "configuration",
+          "constraints": {
+            "required": false,
+            "hidden": false,
+            "unique": false,
+            "shared": "edit"
+          }
+        },
+        {
+          "value": "132asd-123-213456-123asd",
+          "events": {
+            "created": {
+              "at": "2021-02-11T15:48:58+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            },
+            "updated": {
+              "at": "2021-05-03T13:23:13+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            }
+          },
+          "id": "partner_client_id_test",
+          "title": "Partner Client Id(Test)",
+          "description": "Partner Client Id(Test)",
+          "type": "text",
+          "scope": "marketplace",
+          "phase": "configuration",
+          "constraints": {
+            "required": false,
+            "hidden": false,
+            "unique": false,
+            "shared": "edit"
+          }
+        },
+        {
+          "value": "asdASD123pqe==",
+          "events": {
+            "created": {
+              "at": "2021-02-11T15:47:16+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            },
+            "updated": {
+              "at": "2021-07-23T11:51:29+00:00",
+              "by": {
+                "id": "UR-798-889-769",
+                "name": "Roman Hudz"
+              }
+            }
+          },
+          "id": "partner_client_secret_test",
+          "title": "Partner Client Secret (Test)",
+          "description": "Partner Client Secret (Test)",
+          "type": "text",
+          "scope": "marketplace",
+          "phase": "configuration",
+          "constraints": {
+            "required": false,
+            "hidden": false,
+            "unique": false,
+            "shared": "edit"
+          }
+        },
+        {
+          "value": "132asd-123-213456-123asd",
+          "events": {
+            "created": {
+              "at": "2021-02-11T15:49:50+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            },
+            "updated": {
+              "at": "2021-02-11T15:49:50+00:00"
+            }
+          },
+          "id": "partner_tenant_id_test",
+          "title": "Partner Tenant Id (Test)",
+          "description": "Partners Tenant Id (Test)",
+          "type": "text",
+          "scope": "marketplace",
+          "phase": "configuration",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "shared": "edit"
+          }
+        },
+        {
+          "value": "https://redirect_uri_test.com",
+          "events": {
+            "created": {
+              "at": "2021-02-11T15:50:11+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            },
+            "updated": {
+              "at": "2021-11-02T10:46:19+00:00",
+              "by": {
+                "id": "UR-520-530-346",
+                "name": "Esther Mora"
+              }
+            }
+          },
+          "id": "redirect_uri_test",
+          "title": "Redirect URI (test)",
+          "description": "Redirect URI (test)",
+          "type": "text",
+          "scope": "marketplace",
+          "phase": "configuration",
+          "hint": "I am the hint text",
+          "placeholder": "I am the placeholder text",
+          "constraints": {
+            "required": false,
+            "hidden": false,
+            "unique": false,
+            "shared": "edit"
+          }
+        },
+        {
+          "value": "refresh_token_value",
+          "events": {
+            "created": {
+              "at": "2021-02-11T15:49:26+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            },
+            "updated": {
+              "at": "2021-12-17T09:42:18+00:00",
+              "by": {
+                "id": "SU-148-530-931",
+                "name": "Microsoft"
+              }
+            }
+          },
+          "id": "refresh_token_test",
+          "title": "Refresh token (Test)",
+          "description": "Refresh token (Test)",
+          "type": "text",
+          "scope": "marketplace",
+          "phase": "configuration",
+          "hint": "I am the hint text",
+          "placeholder": "I am the placeholder text",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "shared": "edit"
+          }
+        },
+        {
+          "value": "2021-02-10 15:15:56",
+          "events": {
+            "created": {
+              "at": "2021-03-17T16:02:55+00:00",
+              "by": {
+                "id": "SU-323-859-130",
+                "name": "Test Ruben"
+              }
+            },
+            "updated": {
+              "at": "2021-03-17T16:02:55+00:00"
+            }
+          },
+          "id": "retry_after_api_throttling_test",
+          "title": "Retry-After API throttling",
+          "description": "Retry-After API throttling",
+          "type": "text",
+          "scope": "marketplace",
+          "phase": "configuration",
+          "hint": "Retry-After API throttling test",
+          "placeholder": "Retry-After API throttling test",
+          "constraints": {
+            "required": false,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "TL-111-111-111",
+          "events": {
+            "created": {
+              "at": "2021-02-11T15:53:07+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            },
+            "updated": {
+              "at": "2021-07-23T10:22:31+00:00",
+              "by": {
+                "id": "UR-798-889-769",
+                "name": "Roman Hudz"
+              }
+            }
+          },
+          "id": "tier1_template",
+          "title": "Tier-1 Template Id",
+          "description": "Tier-1 Template Id",
+          "type": "text",
+          "scope": "marketplace",
+          "phase": "configuration",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        },
+        {
+          "value": "TL-222-222-222",
+          "events": {
+            "created": {
+              "at": "2021-02-11T15:53:32+00:00",
+              "by": {
+                "id": "UR-418-067-534",
+                "name": "Ruben Sebrango Briz"
+              }
+            },
+            "updated": {
+              "at": "2021-05-13T16:27:01+00:00",
+              "by": {
+                "id": "SU-323-859-130",
+                "name": "Test Ruben"
+              }
+            }
+          },
+          "id": "tier1_template_direct",
+          "title": "Tier-1 Template ID for Direct model",
+          "description": "Tier-1 Template ID for Direct model",
+          "type": "text",
+          "scope": "marketplace",
+          "phase": "configuration",
+          "hint": "I am the hint text",
+          "placeholder": "I am the placeholder text",
+          "constraints": {
+            "required": true,
+            "hidden": false,
+            "unique": false,
+            "shared": null
+          }
+        }
+      ]
+    },
+    "contract": {
+      "id": "CRD-1111-2222-3333",
+      "name": "Contract 1",
+      "type": "distribution"
+    },
+    "marketplace": {
+      "id": "MP-123",
+      "name": "Test Marketplace",
+      "icon": "/media/PA-123-123/marketplaces/MP-123/icon.png"
+    }
+  }
+]
